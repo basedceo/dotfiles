@@ -84,12 +84,22 @@ return {
     lazy = false,
     version = false, -- set this to "*" if you want to always pull the latest change, false to update on release
     opts = {
+      ---@alias Avante.Provider "claude" | "openai" | "azure" | "gemini" | "vertex" | "cohere" | "copilot" | string
+      provider = 'claude', -- Recommend using Claude
       disabled_tools = { "python" },
       api_keys = {
         anthropic = vim.env.ANTHROPIC_API_KEY,
         openai = vim.env.OPENAI_API_KEY,
         gemini = vim.env.GEMINI_API_KEY,
-      }
+      },
+      claude = {
+      endpoint = 'https://api.anthropic.com',
+      model = 'claude-3-7-sonnet-20250219',
+      timeout = 30000, -- Timeout in milliseconds
+      temperature = 0,
+      max_tokens = 8000,
+      disable_tools = true, -- Disable tools for now (it's enabled by default) as it's causing rate-limit problems with Claude, see more here: https://github.com/yetone/avante.nvim/issues/1384
+      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
