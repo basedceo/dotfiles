@@ -18,7 +18,6 @@ path+=('/home/kenny/.cargo/bin')
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 alias ls='ls --color=auto'
-alias zed='~/.local/bin/zed'
 alias lc='eza'
 # alias to reload xresources colors in st
 alias rel="xrdb merge ~/.Xresources && kill -USR1 $(pidof st)"
